@@ -13,6 +13,14 @@ class Potter
   def set_of_uniq_books(basket)
     basket.uniq
   end
+  
+  def rest_of_basket(basket, set)
+    set.each do |val|
+      index = basket.index(val)
+      basket.delete_at(index) unless index.nil?
+    end
+    basket
+  end
 
   def calculate(basket=[])
     price = 0

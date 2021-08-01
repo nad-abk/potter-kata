@@ -19,7 +19,8 @@ To install and run this project :
 
 You can run the tests with:
 
-    bundle exec rspec
+    rspec --init
+    rspec
 
 
-Have fun doing the Kata!
+Have fun with the Kata!

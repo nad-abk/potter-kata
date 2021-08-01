@@ -40,12 +40,28 @@ class Potter
     }.to_a
   end
   
-  def calculate(basket=[])
+  def swap_to_be_clever(result)
+    pairs = get_pair_of_3_and_5(result)
+    pair = pairs.select{ |n| n.size == 2 }
+    first = result.find_index(pair[0].first)
+    second = result.find_index(pair[0].last)
+    substract = result[first] - result[second]
+    result[second].push(substract.last)
+    result[first].pop
+    return result
+  end
+  
+  def calculate(basket)
     sub_total = 0
     price = 0
     unless basket==[]
-      sort_basket_to_sets(basket).each do |b|
-        sub_total = PRICES[b.size]
+      final_basket = if basket.size >= 8 then
+                      swap_to_be_clever(sort_basket_to_sets(basket))
+                    else
+                      sort_basket_to_sets(basket)
+                    end
+      final_basket.each do |fb|
+        sub_total = PRICES[fb.size]
         price += sub_total
       end
     end

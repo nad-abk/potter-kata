@@ -9,6 +9,10 @@ class Potter
     4 => 4 * BOOK_UNIT_PRICE * 0.8,
     5 => 5 * BOOK_UNIT_PRICE * 0.75
   }
+  
+  def set_of_uniq_books(basket)
+    basket.uniq
+  end
 
   def calculate(basket=[])
     price = 0

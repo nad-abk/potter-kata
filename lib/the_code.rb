@@ -10,6 +10,13 @@ class Potter
     5 => 5 * BOOK_UNIT_PRICE * 0.75
   }
 
+  def calculate(basket=[])
+    price = 0
+    unless basket==[]
+      price = PRICES[basket.size]
+    end
+    price
+  end
 
 
 end

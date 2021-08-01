@@ -34,6 +34,12 @@ class Potter
     end
   end
 
+  def get_pair_of_3_and_5(result)
+    result.chunk_while { |i,j|
+      i.size == 5 && j.size == 3
+    }.to_a
+  end
+  
   def calculate(basket=[])
     sub_total = 0
     price = 0

@@ -21,11 +21,27 @@ class Potter
     end
     basket
   end
+  
+  def sort_basket_to_sets(basket, result=[])
+    other_set = Array.new
+    other_set = set_of_uniq_books(basket)
+    result.push(other_set)
+    unless basket == other_set
+      new_basket = rest_of_basket(basket, other_set)
+      sort_basket_to_sets(new_basket,result)
+    else
+      result
+    end
+  end
 
   def calculate(basket=[])
+    sub_total = 0
     price = 0
     unless basket==[]
-      price = PRICES[basket.size]
+      sort_basket_to_sets(basket).each do |b|
+        sub_total = PRICES[b.size]
+        price += sub_total
+      end
     end
     price
   end
